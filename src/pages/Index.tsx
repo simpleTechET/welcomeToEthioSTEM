@@ -23,6 +23,13 @@ const lessons = [
     emoji: "🧱",
     color: "bg-purple-100",
   },
+  {
+    path: "/3-compose-seven-7",
+    title: "Lesson 7: Partners of 7",
+    description: "Compose 7, decompose into two parts, match to numeral 7",
+    emoji: "📅",
+    color: "bg-violet-100",
+  },
 ];
 
 const Index = () => {

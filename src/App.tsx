@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import CountEggs4 from "./pages/3CountEggs4";
 import CountArrays5 from "./pages/3CountArrays5";
 import ComposeSix6 from "./pages/3ComposeSix6";
+import ComposeSeven7 from "./pages/3ComposeSeven7";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/3-count-eggs-4" element={<CountEggs4 />} />
           <Route path="/3-count-arrays-5" element={<CountArrays5 />} />
           <Route path="/3-compose-six-6" element={<ComposeSix6 />} />
+          <Route path="/3-compose-seven-7" element={<ComposeSeven7 />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
