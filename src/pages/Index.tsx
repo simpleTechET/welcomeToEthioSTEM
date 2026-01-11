@@ -16,6 +16,13 @@ const lessons = [
     emoji: "🧦",
     color: "bg-teal-100",
   },
+  {
+    path: "/3-compose-six-6",
+    title: "Lesson 6: Partners of 6",
+    description: "Compose 6, decompose into two parts, match to numeral 6",
+    emoji: "🧱",
+    color: "bg-purple-100",
+  },
 ];
 
 const Index = () => {
