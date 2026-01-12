@@ -30,6 +30,13 @@ const lessons = [
     emoji: "📅",
     color: "bg-violet-100",
   },
+  {
+    path: "/3-circle-count-8",
+    title: "Lesson 8: Circle Counting",
+    description: "Count 6 and 7 objects in circular configurations",
+    emoji: "🔵",
+    color: "bg-sky-100",
+  },
 ];
 
 const Index = () => {
