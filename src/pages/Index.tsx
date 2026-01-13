@@ -44,6 +44,13 @@ const lessons = [
     emoji: "🐠",
     color: "bg-cyan-100",
   },
+  {
+    path: "/3-tally-10",
+    title: "Lesson 10: Tally Marks",
+    description: "Tally 6 and 7 objects using bundled tally marks",
+    emoji: "🌾",
+    color: "bg-amber-100",
+  },
 ];
 
 const Index = () => {
