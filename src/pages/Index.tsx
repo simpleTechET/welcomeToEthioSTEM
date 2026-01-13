@@ -37,6 +37,13 @@ const lessons = [
     emoji: "🔵",
     color: "bg-sky-100",
   },
+  {
+    path: "/3-arrange-count-9",
+    title: "Lesson 9: Arrange & Count",
+    description: "Arrange and count 6 and 7 objects in varied configurations",
+    emoji: "🐠",
+    color: "bg-cyan-100",
+  },
 ];
 
 const Index = () => {
