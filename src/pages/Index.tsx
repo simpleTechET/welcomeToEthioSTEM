@@ -51,6 +51,13 @@ const lessons = [
     emoji: "🌾",
     color: "bg-amber-100",
   },
+  {
+    path: "/3-count-out-11",
+    title: "Lesson 11: Count Out Groups",
+    description: "Look at a numeral and count out a group of up to 7 objects",
+    emoji: "🐬",
+    color: "bg-blue-100",
+  },
 ];
 
 const Index = () => {
