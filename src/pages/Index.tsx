@@ -72,6 +72,13 @@ const lessons = [
     emoji: "🪨",
     color: "bg-stone-100",
   },
+  {
+    path: "/3-finger-count-14",
+    title: "Lesson 14: Finger Counting to 8",
+    description: "Count to 8 from left to right with fingers",
+    emoji: "🐣",
+    color: "bg-yellow-100",
+  },
 ];
 
 const Index = () => {
