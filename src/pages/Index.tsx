@@ -59,6 +59,13 @@ const lessons = [
     color: "bg-blue-100",
   },
   {
+    path: "/3-introduce-8-12",
+    title: "Lesson 12: Introduce 8",
+    description: "Introduce 8, and relate 8 to 7 and 1 more",
+    emoji: "🐙",
+    color: "bg-purple-100",
+  },
+  {
     path: "/3-linear-count-13",
     title: "Lesson 13: Linear Count to 8",
     description: "Use linear configurations to count 8 in relation to 5",
