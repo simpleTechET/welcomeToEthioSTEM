@@ -58,6 +58,13 @@ const lessons = [
     emoji: "🐬",
     color: "bg-blue-100",
   },
+  {
+    path: "/3-linear-count-13",
+    title: "Lesson 13: Linear Count to 8",
+    description: "Use linear configurations to count 8 in relation to 5",
+    emoji: "🪨",
+    color: "bg-stone-100",
+  },
 ];
 
 const Index = () => {
