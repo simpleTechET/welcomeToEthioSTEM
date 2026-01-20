@@ -79,6 +79,13 @@ const lessons = [
     emoji: "🐣",
     color: "bg-yellow-100",
   },
+  {
+    path: "/3-array-count-15",
+    title: "Lesson 15: Array Configurations",
+    description: "Count 8 objects in array configurations with Ansel Ant and Spencer Spider",
+    emoji: "🕷️",
+    color: "bg-green-100",
+  },
 ];
 
 const Index = () => {
