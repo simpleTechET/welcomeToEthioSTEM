@@ -16,6 +16,7 @@ import Introduce8Lesson12 from "./pages/3Introduce8Lesson12";
 import LinearCount13 from "./pages/3LinearCount13";
 import FingerCount14 from "./pages/3FingerCount14";
 import ArrayCount15 from "./pages/3ArrayCount15";
+import Compose8Lesson16 from "./pages/3Compose8Lesson16";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,7 @@ const App = () => (
           <Route path="/3-linear-count-13" element={<LinearCount13 />} />
           <Route path="/3-finger-count-14" element={<FingerCount14 />} />
           <Route path="/3-array-count-15" element={<ArrayCount15 />} />
+          <Route path="/3-compose-8-16" element={<Compose8Lesson16 />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

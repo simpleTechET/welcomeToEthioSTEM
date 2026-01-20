@@ -86,6 +86,13 @@ const lessons = [
     emoji: "🕷️",
     color: "bg-green-100",
   },
+  {
+    path: "/3-compose-8-16",
+    title: "Lesson 16: Compose & Decompose 8",
+    description: "Compose 8, decompose into two parts, and match to the numeral 8",
+    emoji: "🧩",
+    color: "bg-purple-100",
+  },
 ];
 
 const Index = () => {
