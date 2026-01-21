@@ -18,6 +18,20 @@ interface Topic {
   lessons: Lesson[];
 }
 
+interface Topic {
+  id: string;
+  title: string;
+  subtitle: string;
+  standards: string;
+  color: string;
+  borderColor: string;
+  gradientFrom: string;
+  gradientTo: string;
+  icon: string;
+  waveFill: string;
+  lessons: Lesson[];
+}
+
 const topics: Topic[] = [
   {
     id: "A",
@@ -25,7 +39,11 @@ const topics: Topic[] = [
     subtitle: "How Many Questions with up to 7 Objects",
     standards: "PK.CC.1, PK.CC.3abc, PK.CC.4",
     color: "bg-amber-50",
-    borderColor: "border-amber-300",
+    borderColor: "border-amber-400",
+    gradientFrom: "from-amber-400",
+    gradientTo: "to-orange-500",
+    icon: "🐣",
+    waveFill: "#fffbeb",
     lessons: [
       {
         path: "/3-count-eggs-4",
@@ -49,7 +67,11 @@ const topics: Topic[] = [
     subtitle: "Matching One Numeral with up to 7 Objects",
     standards: "PK.CC.3ab, PK.CC.4",
     color: "bg-purple-50",
-    borderColor: "border-purple-300",
+    borderColor: "border-purple-400",
+    gradientFrom: "from-purple-400",
+    gradientTo: "to-pink-500",
+    icon: "🔢",
+    waveFill: "#faf5ff",
     lessons: [
       {
         path: "/3-compose-six-6",
@@ -101,7 +123,11 @@ const topics: Topic[] = [
     subtitle: "How Many Questions with up to 8 Objects",
     standards: "PK.CC.1, PK.CC.3abc, PK.CC.4",
     color: "bg-sky-50",
-    borderColor: "border-sky-300",
+    borderColor: "border-sky-400",
+    gradientFrom: "from-sky-400",
+    gradientTo: "to-cyan-500",
+    icon: "🐙",
+    waveFill: "#f0f9ff",
     lessons: [
       {
         path: "/3-introduce-8-12",
@@ -139,7 +165,11 @@ const topics: Topic[] = [
     subtitle: "Matching One Numeral with up to 8 Objects",
     standards: "PK.CC.3ab, PK.CC.4",
     color: "bg-rose-50",
-    borderColor: "border-rose-300",
+    borderColor: "border-rose-400",
+    gradientFrom: "from-rose-400",
+    gradientTo: "to-red-500",
+    icon: "👑",
+    waveFill: "#fff1f2",
     lessons: [
       {
         path: "/3-compose-8-16",
@@ -147,6 +177,13 @@ const topics: Topic[] = [
         title: "Compose & Decompose 8",
         description: "Compose 8, decompose into two parts, match to numeral 8",
         emoji: "🧩",
+      },
+      {
+        path: "/3-circular-count-17",
+        lessonNumber: 17,
+        title: "Circular Counting to 8",
+        description: "Count 8 objects in circular configurations",
+        emoji: "🍎",
       },
     ],
   },
@@ -156,7 +193,11 @@ const topics: Topic[] = [
     subtitle: "How Many Questions with 0 up to 9 Objects",
     standards: "PK.CC.1, PK.CC.3abc, PK.CC.4",
     color: "bg-emerald-50",
-    borderColor: "border-emerald-300",
+    borderColor: "border-emerald-400",
+    gradientFrom: "from-emerald-400",
+    gradientTo: "to-green-500",
+    icon: "🌱",
+    waveFill: "#ecfdf5",
     lessons: [],
   },
   {
@@ -165,7 +206,11 @@ const topics: Topic[] = [
     subtitle: "Matching One Numeral with 0 up to 9 Objects",
     standards: "PK.CC.3ab, PK.CC.4",
     color: "bg-teal-50",
-    borderColor: "border-teal-300",
+    borderColor: "border-teal-400",
+    gradientFrom: "from-teal-400",
+    gradientTo: "to-cyan-600",
+    icon: "🔮",
+    waveFill: "#f0fdfa",
     lessons: [],
   },
   {
@@ -174,7 +219,11 @@ const topics: Topic[] = [
     subtitle: "How Many Questions with up to 10 Objects",
     standards: "PK.CC.1, PK.CC.3abc, PK.CC.4",
     color: "bg-indigo-50",
-    borderColor: "border-indigo-300",
+    borderColor: "border-indigo-400",
+    gradientFrom: "from-indigo-400",
+    gradientTo: "to-violet-500",
+    icon: "🌟",
+    waveFill: "#eef2ff",
     lessons: [],
   },
   {
@@ -183,7 +232,11 @@ const topics: Topic[] = [
     subtitle: "Matching One Numeral with up to 10 Objects",
     standards: "PK.CC.3ab, PK.CC.4",
     color: "bg-fuchsia-50",
-    borderColor: "border-fuchsia-300",
+    borderColor: "border-fuchsia-400",
+    gradientFrom: "from-fuchsia-400",
+    gradientTo: "to-pink-500",
+    icon: "🎯",
+    waveFill: "#fdf4ff",
     lessons: [],
   },
 ];
@@ -215,22 +268,40 @@ const Index = () => {
           {topics.map((topic) => (
             <div 
               key={topic.id} 
-              className={`${topic.color} rounded-2xl shadow-soft overflow-hidden border-2 ${topic.borderColor}`}
+              className={`${topic.color} rounded-2xl shadow-lg overflow-hidden border-2 ${topic.borderColor} transform transition-all hover:scale-[1.01]`}
             >
-              {/* Topic Header */}
-              <div className={`p-4 border-b ${topic.borderColor}`}>
-                <div className="flex items-center gap-3">
-                  <span className="w-10 h-10 rounded-full bg-white/80 flex items-center justify-center font-fredoka text-xl font-bold text-foreground shadow-sm">
-                    {topic.id}
-                  </span>
-                  <div>
-                    <h2 className="font-fredoka text-xl text-foreground">{topic.title}</h2>
-                    <p className="font-nunito text-sm text-muted-foreground">{topic.subtitle}</p>
+              {/* Fun Topic Header */}
+              <div className={`relative p-5 bg-gradient-to-r ${topic.gradientFrom} ${topic.gradientTo} overflow-hidden`}>
+                {/* Decorative bubbles */}
+                <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-10 w-12 h-12 bg-white/10 rounded-full translate-y-1/2" />
+                <div className="absolute top-2 right-20 w-6 h-6 bg-white/20 rounded-full animate-float" />
+                
+                <div className="relative flex items-center gap-4">
+                  {/* Big fun icon */}
+                  <div className="w-16 h-16 rounded-2xl bg-white/30 backdrop-blur-sm flex items-center justify-center shadow-lg transform -rotate-3 hover:rotate-3 transition-transform">
+                    <span className="text-4xl">{topic.icon}</span>
+                  </div>
+                  
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2">
+                      <span className="bg-white/30 text-white text-xs font-bold px-2 py-1 rounded-full font-nunito">
+                        TOPIC {topic.id}
+                      </span>
+                    </div>
+                    <h2 className="font-fredoka text-2xl text-white drop-shadow-md mt-1">
+                      {topic.subtitle}
+                    </h2>
+                    <p className="font-nunito text-xs text-white/80 mt-1">
+                      📚 {topic.standards}
+                    </p>
                   </div>
                 </div>
-                <p className="font-nunito text-xs text-muted-foreground mt-2 ml-13">
-                  Standards: {topic.standards}
-                </p>
+                
+                {/* Wavy bottom border */}
+                <svg className="absolute bottom-0 left-0 right-0 h-3" viewBox="0 0 100 10" preserveAspectRatio="none">
+                  <path d="M0 10 Q 10 0, 20 5 T 40 5 T 60 5 T 80 5 T 100 5 L 100 10 Z" style={{ fill: topic.waveFill }} />
+                </svg>
               </div>
 
               {/* Lessons */}
