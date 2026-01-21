@@ -185,6 +185,13 @@ const topics: Topic[] = [
         description: "Count 8 objects in circular configurations",
         emoji: "🍎",
       },
+      {
+        path: "/3-arrange-count-18",
+        lessonNumber: 18,
+        title: "Arrange & Count 8",
+        description: "Arrange and count 8 objects in varied configurations",
+        emoji: "🌱",
+      },
     ],
   },
   {
