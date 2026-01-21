@@ -17,6 +17,7 @@ import LinearCount13 from "./pages/3LinearCount13";
 import FingerCount14 from "./pages/3FingerCount14";
 import ArrayCount15 from "./pages/3ArrayCount15";
 import Compose8Lesson16 from "./pages/3Compose8Lesson16";
+import CircularCount17 from "./pages/3CircularCount17";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/3-finger-count-14" element={<FingerCount14 />} />
           <Route path="/3-array-count-15" element={<ArrayCount15 />} />
           <Route path="/3-compose-8-16" element={<Compose8Lesson16 />} />
+          <Route path="/3-circular-count-17" element={<CircularCount17 />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
