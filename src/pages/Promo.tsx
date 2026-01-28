@@ -1,202 +1,311 @@
-import { ArrowRight, BookOpen, Brain, FlaskConical, GraduationCap, MapPin, Users, CheckCircle2, Quote } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { ArrowRight, ArrowLeft, BookOpen, Brain, FlaskConical, GraduationCap, MapPin, Users, CheckCircle2, Quote, Code, Lightbulb, Languages, Send, ExternalLink } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import esaLogo from "@/assets/esa-logo.png";
 import esaCompound from "@/assets/esa-compound.png";
 import esaFence from "@/assets/esa-fence.png";
 import esaClassroom from "@/assets/esa-classroom.jpg";
 
+const slides = [
+  {
+    id: "hero",
+    badge: "ADDIS ABABA, ETHIOPIA",
+    title: "Building the Minds That Will Build",
+    titleHighlight: " Ethiopia",
+    description: "A rigorous, research-backed education grounded in the world's most effective curricula. We prepare students not for tests, but for mastery.",
+    image: esaFence,
+    imageAlt: "Ethiopian STEM Academy Campus Entrance",
+    imageCaption: "Our campus in Addis Ababa — designed for focused learning"
+  },
+  {
+    id: "philosophy",
+    badge: "OUR PHILOSOPHY",
+    title: "Depth Over Breadth.",
+    titleHighlight: " Mastery Over Memorization.",
+    description: "Most schools teach wide and shallow. We teach narrow and deep. When a child truly understands why mathematics works—not just how to perform it—they carry that understanding into every problem they'll ever face.",
+    image: esaClassroom,
+    imageAlt: "Students engaged in interactive learning",
+    imageCaption: "Interactive, hands-on learning environment"
+  },
+  {
+    id: "campus",
+    badge: "OUR CAMPUS",
+    title: "A Space Designed for",
+    titleHighlight: " Focused Learning",
+    description: "Located in Addis Ababa, our campus combines the order and cleanliness that signals excellence with the warmth and greenery that supports growing minds.",
+    image: esaCompound,
+    imageAlt: "Ethiopian STEM Academy main building",
+    imageCaption: "Main Campus Building — Secure, walled compound"
+  },
+  {
+    id: "founder",
+    badge: "FROM THE FOUNDER",
+    title: "This School Exists Because",
+    titleHighlight: " I Needed It",
+    description: "I attended some of Addis Ababa's better private schools. But even there, I saw the gap between what education could be and what it was. Later, through extensive exposure to the formation and operations of a higher education institution, I learned what it takes to create genuine quality—not a business that merely looks like a school.",
+    image: esaFence,
+    imageAlt: "Ethiopian STEM Academy entrance",
+    imageCaption: "የኢትዮጵያ ስቴም አካዳሚ — Excellence through depth"
+  }
+];
+
+const curricula = [
+  {
+    icon: Brain,
+    subject: "Mathematics",
+    name: "Eureka Math (EngageNY)",
+    grades: "K-12",
+    description: "The gold standard for conceptual depth and coherence."
+  },
+  {
+    icon: FlaskConical,
+    subject: "Science",
+    name: "Next Generation Science Standards (NGSS)",
+    grades: "K-12",
+    description: "Framework with Mystery Science (K-5) and OpenSciEd (6-12) for lesson plans."
+  },
+  {
+    icon: Languages,
+    subject: "Literacy/English",
+    name: "Core Knowledge Language Arts (CKLA)",
+    grades: "K-5",
+    description: "Builds background knowledge and skills systematically. EL Education for older grades."
+  },
+  {
+    icon: Code,
+    subject: "Computer Science",
+    name: "Code.org",
+    grades: "K-12",
+    description: "Structured, progressive courses from fundamentals to advanced programming."
+  },
+  {
+    icon: Lightbulb,
+    subject: "Critical Thinking & Logic",
+    name: "Thornburg's Exercises & Critical Thinking Consortium",
+    grades: "All Levels",
+    description: "Exercises for the Mind and materials that develop analytical reasoning."
+  }
+];
+
+const differentiators = [
+  {
+    title: "Small Class Sizes",
+    description: "Maximum 15 students per class ensures every child receives individual attention."
+  },
+  {
+    title: "Qualified, Trained Teachers",
+    description: "Teachers specifically trained in the pedagogical methods of our curricula."
+  },
+  {
+    title: "Bilingual Instruction",
+    description: "Full English immersion with Amharic language support for global readiness."
+  },
+  {
+    title: "Character Development",
+    description: "Academic excellence with ethical grounding. We cultivate both."
+  },
+  {
+    title: "Technology as Tool",
+    description: "Interactive learning apps built on proven curricula—technology that deepens understanding."
+  },
+  {
+    title: "Parent Partnership",
+    description: "Quarterly conferences, transparent progress reporting, and home learning guidance."
+  }
+];
+
 const Promo = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true },
+    [Autoplay({ delay: 8000, stopOnInteraction: true })]
+  );
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const scrollTo = useCallback((index: number) => {
+    if (emblaApi) emblaApi.scrollTo(index);
+  }, [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    setScrollSnaps(emblaApi.scrollSnapList());
+    emblaApi.on("select", onSelect);
+    onSelect();
+  }, [emblaApi, onSelect]);
+
   return (
     <div className="min-h-screen bg-stone-50 font-inter text-stone-900">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-stone-50/95 backdrop-blur-sm border-b border-stone-200">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img src={esaLogo} alt="ESA" className="h-14 w-auto" />
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-stone-600">
-            <a href="#philosophy" className="hover:text-stone-900 transition-colors">Philosophy</a>
             <a href="#curriculum" className="hover:text-stone-900 transition-colors">Curriculum</a>
-            <a href="#campus" className="hover:text-stone-900 transition-colors">Campus</a>
-            <a href="#contact" className="hover:text-stone-900 transition-colors">Inquire</a>
+            <a href="#why-us" className="hover:text-stone-900 transition-colors">Why Us</a>
+            <a href="#connect" className="hover:text-stone-900 transition-colors">Connect</a>
+            <a 
+              href="/learning" 
+              className="text-amber-700 hover:text-amber-800 transition-colors flex items-center gap-1"
+            >
+              Learning App
+              <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="text-amber-700 font-medium tracking-wide text-sm mb-4">
-                ADDIS ABABA, ETHIOPIA
-              </p>
-              <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-medium leading-tight text-stone-900 mb-6">
-                Building the Minds That Will Build
-                <span className="italic text-amber-700"> Ethiopia</span>
-              </h1>
-              <p className="text-lg text-stone-600 leading-relaxed mb-8 max-w-xl">
-                A rigorous, research-backed education grounded in the world's most 
-                effective curricula. We prepare students not for tests, but for mastery.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a 
-                  href="#contact"
-                  className="inline-flex items-center justify-center gap-2 bg-stone-900 text-stone-50 px-8 py-4 font-medium hover:bg-stone-800 transition-colors"
-                >
-                  Schedule a Visit
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-                <a 
-                  href="#curriculum"
-                  className="inline-flex items-center justify-center gap-2 border border-stone-300 text-stone-700 px-8 py-4 font-medium hover:border-stone-400 transition-colors"
-                >
-                  View Curriculum
-                </a>
+      {/* Hero Slideshow */}
+      <section className="pt-24 relative">
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex">
+            {slides.map((slide, index) => (
+              <div key={slide.id} className="flex-[0_0_100%] min-w-0">
+                <div className="grid lg:grid-cols-2 min-h-[85vh]">
+                  {/* Text Content */}
+                  <div className="flex flex-col justify-center px-6 lg:px-16 py-16 order-2 lg:order-1">
+                    <p className="text-amber-700 font-medium tracking-wide text-sm mb-4">
+                      {slide.badge}
+                    </p>
+                    <h1 className="font-playfair text-3xl md:text-4xl lg:text-5xl font-medium leading-tight text-stone-900 mb-6">
+                      {slide.title}
+                      <span className="italic text-amber-700">{slide.titleHighlight}</span>
+                    </h1>
+                    <p className="text-lg text-stone-600 leading-relaxed mb-8 max-w-xl">
+                      {slide.description}
+                    </p>
+                    {index === 0 && (
+                      <div className="flex flex-col sm:flex-row gap-4">
+                        <a 
+                          href="https://t.me/ethiostembot"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center gap-2 bg-stone-900 text-stone-50 px-8 py-4 font-medium hover:bg-stone-800 transition-colors"
+                        >
+                          <Send className="w-4 h-4" />
+                          Chat on Telegram
+                        </a>
+                        <a 
+                          href="#curriculum"
+                          className="inline-flex items-center justify-center gap-2 border border-stone-300 text-stone-700 px-8 py-4 font-medium hover:border-stone-400 transition-colors"
+                        >
+                          View Curriculum
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                  {/* Image */}
+                  <div className="relative order-1 lg:order-2 min-h-[40vh] lg:min-h-full">
+                    <img 
+                      src={slide.image} 
+                      alt={slide.imageAlt}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-stone-900/20" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <p className="text-stone-50 text-sm font-medium">
+                        {slide.imageCaption}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-amber-100 to-stone-200 -z-10" />
-              <img 
-                src={esaFence} 
-                alt="Ethiopian STEM Academy Campus Entrance" 
-                className="w-full shadow-2xl"
+            ))}
+          </div>
+        </div>
+
+        {/* Carousel Controls */}
+        <div className="absolute bottom-8 left-6 lg:left-16 flex items-center gap-4 z-10">
+          <button
+            onClick={scrollPrev}
+            className="w-10 h-10 flex items-center justify-center bg-white/90 hover:bg-white border border-stone-200 transition-colors"
+            aria-label="Previous slide"
+          >
+            <ArrowLeft className="w-4 h-4" />
+          </button>
+          <div className="flex gap-2">
+            {scrollSnaps.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  index === selectedIndex ? "bg-amber-600" : "bg-stone-300 hover:bg-stone-400"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
               />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-stone-900/80 to-transparent p-6">
-                <p className="text-stone-50 text-sm font-medium">
-                  Our campus in Addis Ababa — designed for focused learning
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
+          <button
+            onClick={scrollNext}
+            className="w-10 h-10 flex items-center justify-center bg-white/90 hover:bg-white border border-stone-200 transition-colors"
+            aria-label="Next slide"
+          >
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
       </section>
 
-      {/* Philosophy */}
-      <section id="philosophy" className="py-24 px-6 bg-stone-100">
+      {/* Curriculum Section */}
+      <section id="curriculum" className="py-24 px-6 bg-stone-100">
         <div className="max-w-6xl mx-auto">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mb-16">
             <p className="text-amber-700 font-medium tracking-wide text-sm mb-4">
-              OUR PHILOSOPHY
+              WORLD-CLASS CURRICULA
             </p>
-            <h2 className="font-playfair text-3xl md:text-4xl font-medium leading-tight text-stone-900 mb-8">
-              Depth Over Breadth. Mastery Over Memorization.
+            <h2 className="font-playfair text-3xl md:text-4xl font-medium leading-tight text-stone-900 mb-6">
+              Built on the World's Most Effective Methods
             </h2>
-            <p className="text-lg text-stone-600 leading-relaxed mb-6">
-              Most schools teach wide and shallow. We teach narrow and deep. When a child truly 
-              understands <em>why</em> mathematics works—not just how to perform it—they carry that 
-              understanding into every problem they'll ever face.
-            </p>
             <p className="text-lg text-stone-600 leading-relaxed">
-              This is why we've chosen curricula that have been refined over decades: Singapore Math 
-              for its problem-solving rigor, Eureka Math for its conceptual coherence, and hands-on 
-              science that builds genuine scientific thinking—not just vocabulary.
+              We don't experiment on children. Every subject is taught using curricula that have been 
+              refined over decades and proven across top-performing education systems worldwide.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-16">
-            <div className="bg-stone-50 p-8 border border-stone-200">
-              <div className="w-12 h-12 bg-amber-100 flex items-center justify-center mb-6">
-                <Brain className="w-6 h-6 text-amber-700" />
-              </div>
-              <h3 className="font-playfair text-xl font-medium mb-3">Conceptual Understanding</h3>
-              <p className="text-stone-600 leading-relaxed">
-                Students learn the 'why' before the 'how'. This creates flexible thinkers 
-                who can apply knowledge to novel situations.
-              </p>
-            </div>
-            <div className="bg-stone-50 p-8 border border-stone-200">
-              <div className="w-12 h-12 bg-amber-100 flex items-center justify-center mb-6">
-                <BookOpen className="w-6 h-6 text-amber-700" />
-              </div>
-              <h3 className="font-playfair text-xl font-medium mb-3">Proven Curricula</h3>
-              <p className="text-stone-600 leading-relaxed">
-                We don't experiment on children. Our curricula are battle-tested across 
-                top-performing education systems worldwide.
-              </p>
-            </div>
-            <div className="bg-stone-50 p-8 border border-stone-200">
-              <div className="w-12 h-12 bg-amber-100 flex items-center justify-center mb-6">
-                <FlaskConical className="w-6 h-6 text-amber-700" />
-              </div>
-              <h3 className="font-playfair text-xl font-medium mb-3">Hands-On Science</h3>
-              <p className="text-stone-600 leading-relaxed">
-                Real experiments, real observations, real conclusions. Science is a practice, 
-                not a subject to be memorized.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Curriculum Detail */}
-      <section id="curriculum" className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16">
-            <div>
-              <p className="text-amber-700 font-medium tracking-wide text-sm mb-4">
-                CURRICULUM FOUNDATIONS
-              </p>
-              <h2 className="font-playfair text-3xl md:text-4xl font-medium leading-tight text-stone-900 mb-8">
-                Built on the World's Most Effective Methods
-              </h2>
-              
-              <div className="space-y-8">
-                <div className="flex gap-4">
-                  <div className="w-1 bg-amber-600 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-medium text-lg mb-2">Singapore Mathematics</h3>
-                    <p className="text-stone-600 leading-relaxed">
-                      The approach that made Singapore #1 globally in math achievement. 
-                      Concrete → Pictorial → Abstract progression ensures lasting understanding.
-                    </p>
-                  </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {curricula.map((item, i) => (
+              <div key={i} className="bg-white p-8 border border-stone-200 hover:border-amber-200 transition-colors">
+                <div className="w-12 h-12 bg-amber-100 flex items-center justify-center mb-6">
+                  <item.icon className="w-6 h-6 text-amber-700" />
                 </div>
-                <div className="flex gap-4">
-                  <div className="w-1 bg-amber-600 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-medium text-lg mb-2">Eureka Math (EngageNY)</h3>
-                    <p className="text-stone-600 leading-relaxed">
-                      Developed by the Great Minds organization, this curriculum builds 
-                      mathematical coherence across grade levels with exceptional depth.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="w-1 bg-amber-600 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-medium text-lg mb-2">Inquiry-Based Science</h3>
-                    <p className="text-stone-600 leading-relaxed">
-                      Students don't just learn about the scientific method—they live it. 
-                      Observation, hypothesis, experimentation, and evidence-based conclusions.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-stone-900 text-stone-50 p-10">
-              <Quote className="w-10 h-10 text-amber-500 mb-6" />
-              <blockquote className="font-playfair text-2xl font-medium leading-relaxed mb-6 italic">
-                "The goal of education is not to increase the amount of knowledge but to 
-                create the possibilities for a child to invent and discover."
-              </blockquote>
-              <cite className="text-stone-400 not-italic">— Jean Piaget</cite>
-              
-              <div className="mt-12 pt-8 border-t border-stone-700">
-                <h4 className="text-amber-500 font-medium mb-4">Assessment Philosophy</h4>
-                <p className="text-stone-300 leading-relaxed">
-                  We use formative assessment to understand where each student is, not 
-                  summative testing to rank them. Progress is measured against mastery 
-                  standards, not against other children.
+                <p className="text-amber-700 text-sm font-medium mb-1">{item.subject}</p>
+                <h3 className="font-playfair text-xl font-medium mb-2">{item.name}</h3>
+                <p className="text-stone-500 text-sm mb-3">Grades: {item.grades}</p>
+                <p className="text-stone-600 leading-relaxed text-sm">
+                  {item.description}
                 </p>
               </div>
-            </div>
+            ))}
+          </div>
+
+          {/* Quote Block */}
+          <div className="mt-16 bg-stone-900 text-stone-50 p-10">
+            <Quote className="w-10 h-10 text-amber-500 mb-6" />
+            <blockquote className="font-playfair text-2xl font-medium leading-relaxed mb-6 italic max-w-3xl">
+              "The goal of education is not to increase the amount of knowledge but to 
+              create the possibilities for a child to invent and discover."
+            </blockquote>
+            <cite className="text-stone-400 not-italic">— Jean Piaget</cite>
           </div>
         </div>
       </section>
 
-      {/* What Sets Us Apart */}
-      <section className="py-24 px-6 bg-amber-50">
+      {/* Why Us Section */}
+      <section id="why-us" className="py-24 px-6 bg-amber-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <p className="text-amber-700 font-medium tracking-wide text-sm mb-4">
@@ -207,38 +316,13 @@ const Promo = () => {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              {
-                title: "Small Class Sizes",
-                description: "Maximum 15 students per class ensures every child receives individual attention and no one falls through the cracks."
-              },
-              {
-                title: "Qualified, Trained Teachers",
-                description: "Our teachers are specifically trained in the pedagogical methods of our curricula—not just the content."
-              },
-              {
-                title: "Bilingual Instruction",
-                description: "Full English immersion with Amharic language support ensures global readiness while honoring cultural identity."
-              },
-              {
-                title: "Character Development",
-                description: "Academic excellence without ethical grounding produces clever people, not good ones. We cultivate both."
-              },
-              {
-                title: "Technology as Tool, Not Crutch",
-                description: "We use interactive learning apps built on proven curricula—technology that deepens understanding, not replaces teaching."
-              },
-              {
-                title: "Parent Partnership",
-                description: "Quarterly conferences, transparent progress reporting, and guidance on how to support learning at home."
-              }
-            ].map((item, i) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {differentiators.map((item, i) => (
               <div key={i} className="flex gap-4 p-6 bg-white border border-amber-100">
                 <CheckCircle2 className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" />
                 <div>
                   <h3 className="font-medium text-lg mb-2">{item.title}</h3>
-                  <p className="text-stone-600 leading-relaxed">{item.description}</p>
+                  <p className="text-stone-600 leading-relaxed text-sm">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -246,215 +330,83 @@ const Promo = () => {
         </div>
       </section>
 
-      {/* Campus */}
-      <section id="campus" className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
+      {/* Connect Section */}
+      <section id="connect" className="py-24 px-6">
+        <div className="max-w-4xl mx-auto text-center">
           <p className="text-amber-700 font-medium tracking-wide text-sm mb-4">
-            OUR CAMPUS
+            BEGIN THE CONVERSATION
           </p>
-          <h2 className="font-playfair text-3xl md:text-4xl font-medium leading-tight text-stone-900 mb-12">
-            A Space Designed for Focused Learning
+          <h2 className="font-playfair text-3xl md:text-4xl font-medium leading-tight text-stone-900 mb-6">
+            We Select Families as Much as Families Select Us
           </h2>
+          <p className="text-lg text-stone-600 leading-relaxed mb-8 max-w-2xl mx-auto">
+            Excellence requires alignment. We're looking for parents who understand 
+            that real education takes time and partnership—not just tuition. If you believe 
+            your child deserves depth over breadth, we'd like to meet you.
+          </p>
           
-          {/* Image Gallery */}
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="relative group overflow-hidden">
-              <img 
-                src={esaCompound} 
-                alt="Ethiopian STEM Academy main building" 
-                className="w-full h-72 object-cover shadow-lg group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-stone-900/80 to-transparent p-4">
-                <p className="text-stone-50 text-sm font-medium">Main Campus Building</p>
-              </div>
-            </div>
-            <div className="relative group overflow-hidden">
-              <img 
-                src={esaClassroom} 
-                alt="Students engaged in interactive learning" 
-                className="w-full h-72 object-cover shadow-lg group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-stone-900/80 to-transparent p-4">
-                <p className="text-stone-50 text-sm font-medium">Interactive Learning Environment</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <p className="text-lg text-stone-600 leading-relaxed mb-6">
-                Located in Addis Ababa, our campus combines the order and cleanliness 
-                that signals excellence with the warmth and greenery that supports 
-                growing minds.
-              </p>
-              <ul className="space-y-4 text-stone-600">
-                <li className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                  <span>Secure, walled compound with controlled access</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Users className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                  <span>Age-appropriate outdoor play and learning areas</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <GraduationCap className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                  <span>Dedicated science and discovery spaces</span>
-                </li>
-              </ul>
-            </div>
-            <div className="relative group overflow-hidden">
-              <img 
-                src={esaFence} 
-                alt="Ethiopian STEM Academy entrance" 
-                className="w-full shadow-lg"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-stone-900/80 to-transparent p-4">
-                <p className="text-stone-50 text-sm font-medium">Campus Entrance — የኢትዮጵያ ስቴም አካዳሚ</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          {/* Telegram CTA */}
+          <a 
+            href="https://t.me/ethiostembot"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-3 bg-stone-900 text-stone-50 px-10 py-5 font-medium hover:bg-stone-800 transition-colors text-lg"
+          >
+            <Send className="w-5 h-5" />
+            Message Us on Telegram
+          </a>
+          <p className="text-stone-500 text-sm mt-4">
+            @ethiostembot — Fast, direct, no forms
+          </p>
 
-      {/* Founder Note */}
-      <section className="py-24 px-6 bg-stone-900 text-stone-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center">
-            <p className="text-amber-500 font-medium tracking-wide text-sm mb-4">
-              A NOTE FROM THE FOUNDER
-            </p>
-            <h2 className="font-playfair text-3xl md:text-4xl font-medium leading-tight mb-8">
-              This School Exists Because I Needed It
-            </h2>
-            <p className="text-lg text-stone-300 leading-relaxed mb-6">
-              I was fortunate to attend some of Addis Ababa's better private schools. 
-              But even there, I saw the gap between what education could be and what 
-              it was. Later, watching my mother build and operate a private medical 
-              college from nothing, I learned what it takes to create an institution 
-              of genuine quality—not a business that merely looks like a school.
-            </p>
-            <p className="text-lg text-stone-300 leading-relaxed mb-6">
-              Ethiopian STEM Academy is built on that foundation: the world's best 
-              educational research, delivered with the operational rigor I witnessed 
-              firsthand, in the city I call home.
-            </p>
-            <p className="text-stone-400 italic">
-              — For inquiring parents, I welcome direct conversation about our 
-              philosophy and methods.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact / Inquiry */}
-      <section id="contact" className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16">
-            <div>
-              <p className="text-amber-700 font-medium tracking-wide text-sm mb-4">
-                BEGIN THE CONVERSATION
-              </p>
-              <h2 className="font-playfair text-3xl md:text-4xl font-medium leading-tight text-stone-900 mb-8">
-                We Select Families as Much as Families Select Us
-              </h2>
-              <p className="text-lg text-stone-600 leading-relaxed mb-6">
-                Excellence requires alignment. We're looking for parents who understand 
-                that real education takes time and partnership—not just tuition.
-              </p>
-              <p className="text-lg text-stone-600 leading-relaxed mb-8">
-                If you believe your child deserves depth over breadth, and mastery 
-                over memorization, we'd like to meet you.
-              </p>
-              
-              <div className="space-y-4 text-stone-600">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-amber-100 flex items-center justify-center">
-                    <MapPin className="w-5 h-5 text-amber-700" />
-                  </div>
-                  <span>Addis Ababa, Ethiopia</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-stone-100 p-10">
-              <h3 className="font-playfair text-2xl font-medium mb-6">Request Information</h3>
-              <form className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-stone-700 mb-2">
-                      Parent Name
-                    </label>
-                    <input 
-                      type="text" 
-                      className="w-full px-4 py-3 border border-stone-300 bg-white focus:outline-none focus:border-amber-600 transition-colors"
-                      placeholder="Your full name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-stone-700 mb-2">
-                      Phone Number
-                    </label>
-                    <input 
-                      type="tel" 
-                      className="w-full px-4 py-3 border border-stone-300 bg-white focus:outline-none focus:border-amber-600 transition-colors"
-                      placeholder="+251..."
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-2">
-                    Email Address
-                  </label>
-                  <input 
-                    type="email" 
-                    className="w-full px-4 py-3 border border-stone-300 bg-white focus:outline-none focus:border-amber-600 transition-colors"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-2">
-                    Child's Age / Grade Level
-                  </label>
-                  <input 
-                    type="text" 
-                    className="w-full px-4 py-3 border border-stone-300 bg-white focus:outline-none focus:border-amber-600 transition-colors"
-                    placeholder="e.g., 4 years old, entering Pre-K"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-2">
-                    What matters most to you in your child's education?
-                  </label>
-                  <textarea 
-                    rows={4}
-                    className="w-full px-4 py-3 border border-stone-300 bg-white focus:outline-none focus:border-amber-600 transition-colors resize-none"
-                    placeholder="Tell us what you're looking for..."
-                  />
-                </div>
-                <button 
-                  type="submit"
-                  className="w-full bg-stone-900 text-stone-50 px-8 py-4 font-medium hover:bg-stone-800 transition-colors"
-                >
-                  Submit Inquiry
-                </button>
-              </form>
+          {/* Social & Digital Links */}
+          <div className="mt-16 pt-12 border-t border-stone-200">
+            <p className="text-stone-500 text-sm font-medium mb-6">EXPLORE MORE</p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a 
+                href="/learning"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-stone-300 text-stone-700 hover:border-amber-400 hover:text-amber-700 transition-colors"
+              >
+                <BookOpen className="w-4 h-4" />
+                Try Our Learning App
+              </a>
+              <a 
+                href="https://t.me/ethiostembot"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-stone-300 text-stone-700 hover:border-amber-400 hover:text-amber-700 transition-colors"
+              >
+                <Send className="w-4 h-4" />
+                Telegram
+              </a>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 border-t border-stone-200">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <img src={esaLogo} alt="ESA" className="h-8 w-auto" />
-            <span className="text-stone-600 text-sm">
-              Ethiopian STEM Academy · Addis Ababa
-            </span>
+      <footer className="py-12 px-6 border-t border-stone-200 bg-stone-100">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <img src={esaLogo} alt="ESA" className="h-10 w-auto" />
+              <div>
+                <p className="font-medium text-stone-900">Ethiopian STEM Academy</p>
+                <p className="text-stone-500 text-sm flex items-center gap-1">
+                  <MapPin className="w-3 h-3" /> Addis Ababa, Ethiopia
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-6 text-sm text-stone-500">
+              <a href="/learning" className="hover:text-stone-700 transition-colors">Learning App</a>
+              <a href="https://t.me/ethiostembot" target="_blank" rel="noopener noreferrer" className="hover:text-stone-700 transition-colors">Telegram</a>
+            </div>
           </div>
-          <p className="text-stone-500 text-sm">
-            © 2026 Ethiopian STEM Academy. All rights reserved.
-          </p>
+          <div className="mt-8 pt-6 border-t border-stone-200 text-center">
+            <p className="text-stone-400 text-sm">
+              © 2026 Ethiopian STEM Academy. All rights reserved.
+            </p>
+          </div>
         </div>
       </footer>
     </div>
