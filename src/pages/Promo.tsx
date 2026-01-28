@@ -1,6 +1,8 @@
 import { ArrowRight, BookOpen, Brain, FlaskConical, GraduationCap, MapPin, Users, CheckCircle2, Quote } from "lucide-react";
 import esaLogo from "@/assets/esa-logo.png";
 import esaCompound from "@/assets/esa-compound.png";
+import esaFence from "@/assets/esa-fence.png";
+import esaClassroom from "@/assets/esa-classroom.jpg";
 
 const Promo = () => {
   return (
@@ -9,7 +11,7 @@ const Promo = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-stone-50/95 backdrop-blur-sm border-b border-stone-200">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src={esaLogo} alt="ESA" className="h-10 w-auto" />
+            <img src={esaLogo} alt="ESA" className="h-14 w-auto" />
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-stone-600">
             <a href="#philosophy" className="hover:text-stone-900 transition-colors">Philosophy</a>
@@ -55,8 +57,8 @@ const Promo = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-br from-amber-100 to-stone-200 -z-10" />
               <img 
-                src={esaCompound} 
-                alt="Ethiopian STEM Academy Campus" 
+                src={esaFence} 
+                alt="Ethiopian STEM Academy Campus Entrance" 
                 className="w-full shadow-2xl"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-stone-900/80 to-transparent p-6">
@@ -247,21 +249,39 @@ const Promo = () => {
       {/* Campus */}
       <section id="campus" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1">
+          <p className="text-amber-700 font-medium tracking-wide text-sm mb-4">
+            OUR CAMPUS
+          </p>
+          <h2 className="font-playfair text-3xl md:text-4xl font-medium leading-tight text-stone-900 mb-12">
+            A Space Designed for Focused Learning
+          </h2>
+          
+          {/* Image Gallery */}
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <div className="relative group overflow-hidden">
               <img 
                 src={esaCompound} 
-                alt="Ethiopian STEM Academy grounds" 
-                className="w-full shadow-xl"
+                alt="Ethiopian STEM Academy main building" 
+                className="w-full h-72 object-cover shadow-lg group-hover:scale-105 transition-transform duration-500"
               />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-stone-900/80 to-transparent p-4">
+                <p className="text-stone-50 text-sm font-medium">Main Campus Building</p>
+              </div>
             </div>
-            <div className="order-1 lg:order-2">
-              <p className="text-amber-700 font-medium tracking-wide text-sm mb-4">
-                OUR CAMPUS
-              </p>
-              <h2 className="font-playfair text-3xl md:text-4xl font-medium leading-tight text-stone-900 mb-8">
-                A Space Designed for Focused Learning
-              </h2>
+            <div className="relative group overflow-hidden">
+              <img 
+                src={esaClassroom} 
+                alt="Students engaged in interactive learning" 
+                className="w-full h-72 object-cover shadow-lg group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-stone-900/80 to-transparent p-4">
+                <p className="text-stone-50 text-sm font-medium">Interactive Learning Environment</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div>
               <p className="text-lg text-stone-600 leading-relaxed mb-6">
                 Located in Addis Ababa, our campus combines the order and cleanliness 
                 that signals excellence with the warmth and greenery that supports 
@@ -281,6 +301,16 @@ const Promo = () => {
                   <span>Dedicated science and discovery spaces</span>
                 </li>
               </ul>
+            </div>
+            <div className="relative group overflow-hidden">
+              <img 
+                src={esaFence} 
+                alt="Ethiopian STEM Academy entrance" 
+                className="w-full shadow-lg"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-stone-900/80 to-transparent p-4">
+                <p className="text-stone-50 text-sm font-medium">Campus Entrance — የኢትዮጵያ ስቴም አካዳሚ</p>
+              </div>
             </div>
           </div>
         </div>
