@@ -23,13 +23,16 @@ import ArrangeCount18 from "./pages/3ArrangeCount18";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
+// inside src/App.tsx (replace the basename calculation)
+const basename =
+  import.meta.env.PROD ? "/welcomeToEthioSTEM" : "";
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <Routes>
           <Route path="/" element={<Promo />} />
           <Route path="/learning" element={<Index />} />
