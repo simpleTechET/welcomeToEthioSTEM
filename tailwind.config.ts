@@ -16,6 +16,8 @@ export default {
       fontFamily: {
         fredoka: ["Fredoka", "sans-serif"],
         nunito: ["Nunito", "sans-serif"],
+        playfair: ["Playfair Display", "serif"],
+        inter: ["Inter", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

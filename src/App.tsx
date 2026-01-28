@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import Promo from "./pages/Promo";
 import CountEggs4 from "./pages/3CountEggs4";
 import CountArrays5 from "./pages/3CountArrays5";
 import ComposeSix6 from "./pages/3ComposeSix6";
@@ -30,7 +31,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Promo />} />
+          <Route path="/learning" element={<Index />} />
           <Route path="/3-count-eggs-4" element={<CountEggs4 />} />
           <Route path="/3-count-arrays-5" element={<CountArrays5 />} />
           <Route path="/3-compose-six-6" element={<ComposeSix6 />} />
