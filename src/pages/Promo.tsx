@@ -324,8 +324,8 @@ const Promo = () => {
               <div className="flex items-start gap-3">
                 <Award className="w-6 h-6 text-amber-500 flex-shrink-0 mt-1" />
                 <div>
-                  <p className="text-stone-50 font-medium">Top Academic Performer</p>
-                  <p className="text-stone-400 text-sm">Consistently ranked 1st in class</p>
+                  <p className="text-stone-50 font-medium">Brilliant, Committed Teachers</p>
+                  <p className="text-stone-400 text-sm">Consistently produce excellent results in class</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -338,8 +338,8 @@ const Promo = () => {
             </div>
 
             <p>
-              Combined with all the entrepreneurship I absorbed growing up—watching institutions built 
-              from the ground up—is how I learned to build and run a premium quality 
+              Combined with carefully selected and well compensated teachers, all the entrepreneurship I absorbed growing up—watching institutions built 
+              from the ground up—is what helps build and run a premium quality 
               haven for young nerds like me. Children who think differently. Children who need depth, 
               not distraction. Children who deserve teachers who understand that real brilliance needs 
               space to unfold.
