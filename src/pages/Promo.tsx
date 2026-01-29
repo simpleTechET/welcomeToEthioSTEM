@@ -339,7 +339,7 @@ const Promo = () => {
 
             <p>
               Combined with all the entrepreneurship I absorbed growing up—watching institutions built 
-              from the ground up—I have complete faith that I will build and run a premium quality 
+              from the ground up—is how I learned to build and run a premium quality 
               haven for young nerds like me. Children who think differently. Children who need depth, 
               not distraction. Children who deserve teachers who understand that real brilliance needs 
               space to unfold.
