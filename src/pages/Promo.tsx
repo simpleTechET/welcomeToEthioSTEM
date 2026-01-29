@@ -76,7 +76,7 @@ const Promo = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-stone-50/95 backdrop-blur-sm border-b border-stone-200">
         <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src={esaLogo} alt="ESA" className="h-14 w-auto" />
+            <img src={esaLogo} alt="ESA" className="h-18 w-auto" />
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-stone-600">
             <a href="#curriculum" className="hover:text-stone-900 transition-colors">Curriculum</a>
