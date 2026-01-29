@@ -3,6 +3,7 @@ import esaLogo from "@/assets/esa-logo.png";
 import esaCompound from "@/assets/esa-compound.png";
 import esaFence from "@/assets/esa-fence.png";
 import esaClassroom from "@/assets/esa-classroom.jpg";
+import classroom2 from "@/assets/classroom2.jpg";
 
 const curricula = [
   {
@@ -250,7 +251,7 @@ const Promo = () => {
             <div className="group overflow-hidden">
               <div className="relative overflow-hidden">
                 <img 
-                  src={esaClassroom} 
+                  src={classroom2} 
                   alt="Modern classroom interior" 
                   className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
                 />
