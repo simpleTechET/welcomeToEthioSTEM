@@ -337,13 +337,6 @@ const Promo = () => {
             </div>
 
             <p>
-              Life hasn't been straightforward. I've been targeted and challenged by those closest to 
-              me since before I could even recognize what was happening. But that forging has given me 
-              something valuable: resilience, unshakable self-belief, deep compassion, sensitivity, 
-              and patience—but also a fierce, powerful resolve when it matters.
-            </p>
-
-            <p>
               Combined with all the entrepreneurship I absorbed growing up—watching institutions built 
               from the ground up—I have complete faith that I will build and run a premium quality 
               haven for young nerds like me. Children who think differently. Children who need depth, 
