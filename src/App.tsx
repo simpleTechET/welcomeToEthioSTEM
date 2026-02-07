@@ -22,6 +22,7 @@ import CircularCount17 from "./pages/3CircularCount17";
 import ArrangeCount18 from "./pages/3ArrangeCount18";
 import Tally19 from "./pages/3Tally19";
 import CountOut20 from "./pages/3CountOut20";
+import IntroduceZero21 from "./pages/3IntroduceZero21";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -55,6 +56,7 @@ const App = () => (
           <Route path="/3-arrange-count-18" element={<ArrangeCount18 />} />
           <Route path="/3-tally-19" element={<Tally19 />} />
           <Route path="/3-count-out-20" element={<CountOut20 />} />
+          <Route path="/3-introduce-zero-21" element={<IntroduceZero21 />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
