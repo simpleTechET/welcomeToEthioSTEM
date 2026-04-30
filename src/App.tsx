@@ -32,6 +32,9 @@ const basename =
   import.meta.env.PROD ? "/welcomeToEthioSTEM" : "";
 
 const App = () => (
+  return (
+    <div style={{ color: 'red' }}>Test: App is running</div>
+    {/* ...rest of your app... */}
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
@@ -65,6 +68,7 @@ const App = () => (
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
+)
 );
 
 export default App;
