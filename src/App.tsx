@@ -29,7 +29,7 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 // inside src/App.tsx (replace the basename calculation)
 const basename =
-  import.meta.env.PROD ? "/welcomeToEthioSTEM" : "";
+  import.meta.env.PROD ? "/theSTEMLab" : "";
 
 const App = () => (
     <QueryClientProvider client={queryClient}>
